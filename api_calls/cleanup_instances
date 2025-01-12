@@ -1,0 +1,6 @@
+instance_list=$(curl -X GET localhost:7000/list-instances | jq -r '.["instances-list"][].id')
+
+for instance_id in $instance_list
+do
+    docker rm -f "$instance_id"
+done

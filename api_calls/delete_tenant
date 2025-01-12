@@ -1,0 +1,6 @@
+curl \
+    -X DELETE \
+    -H "Content-Type: application/json" \
+    localhost:9988/delete-tenant?tenant_id=3
+
+

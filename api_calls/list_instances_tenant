@@ -1,0 +1,3 @@
+curl \
+    -X GET \
+    localhost:9988/list-instances?tenant_id=1

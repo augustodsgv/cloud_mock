@@ -1,0 +1,12 @@
+if [ -z "$1" ]; then
+    echo "Usage: $0 <tenant_id>"
+    exit 1
+fi
+
+TENANT_ID=$1
+
+curl \
+    -X POST \
+    -H "Content-Type: application/json" \
+    -d "{\"tenant_id\":\"$TENANT_ID\", \"instance_name\": \"vm1\", \"product\":\"vm\", \"region\": \"cloud-region-a\"}" \
+    localhost:7000/create-instance

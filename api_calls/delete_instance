@@ -1,0 +1,20 @@
+#!/bin/bash
+
+# This script deletes a cloud instance by making an API call to the specified endpoint.
+# Usage: ./delete_instance.sh <instance_id> <region>
+
+instance_id=$1
+region=$2
+tenant_id=$3
+
+# Check if all parameters are provided
+if [ -z "$instance_id" ] || [ -z "$region" ] || [ -z "$tenant_id" ]; then
+    echo "Usage: $0 <instance_id> <region> <tenant_id>"
+    exit 1
+fi
+
+curl \
+    -X DELETE \
+    -H "Content-Type: application/json" \
+    -d "{\"instance_id\": \"$instance_id\", \"region\": \"$region\", \"tenant_id\": \"$tenant_id\", \"product\":\"vm\"}" \
+    localhost:7000/delete-instance

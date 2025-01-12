@@ -1,0 +1,5 @@
+curl \
+    -X POST \
+    -H "Content-Type: application/json" \
+    -d '{"tenant_name":"panqueca"}' \
+    localhost:7000/create-tenant
