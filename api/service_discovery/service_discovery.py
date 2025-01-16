@@ -1,12 +1,11 @@
-from abc import ABC
+from abc import ABC, abstractmethod
 from api.cloud.instance import Instance
 
 class ServiceDiscovery(ABC):
-    def __init__(self):
-        pass
-
+    @abstractmethod
     def register_instance(self, instance : Instance) -> None:
         pass
 
+    @abstractmethod
     def deregister_instance(self, instance : Instance) -> None:
         pass

@@ -30,13 +30,3 @@ class Instance:
     
     def __str__(self):
         return f'ID: {self.id}\nName: {self.name}\nTenant: {self.tenant_id}\nProduct: {self.product}'
-
-    @property
-    def dict(self):
-        return {"id": self.id,
-                "name": self.name,
-                "tenant_id": self.tenant_id,
-                "product": self.product,
-                "region": self.region,
-                "address": self.address,
-                "metric_port": self.metrics_port}

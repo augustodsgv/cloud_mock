@@ -1,6 +1,6 @@
 from api.cloud.cloud import Cloud, TenantDoesNotExist, TenantHasInstances, InstanceDontExist, ProductDoesNotExist, RegionDoesNotExist
 from api.infrastructure.docker_infrastructure import DockerInfrastructure
-from api.service_discovery.consul_sd import ConsulSD
+from api.service_discovery.prometheus_ring_sd import PrometheusRingServiceDiscovery
 from api.database.postgres_database import PostgresDatabase
 from fastapi import FastAPI, HTTPException
 from prometheus_fastapi_instrumentator import Instrumentator
@@ -73,7 +73,7 @@ cloud_infrastructre_c = DockerInfrastructure(region='cloud-region-c', cloud_inst
 if 'SD_HOST' in os.environ:
     SD_HOST = os.environ.get('SD_HOST')
     SD_PORT = os.environ.get('SD_PORT')
-    service_discovery = ConsulSD(SD_HOST, SD_PORT)
+    service_discovery = PrometheusRingServiceDiscovery(SD_HOST, SD_PORT)
     logger.debug(f"Service discovery enabled with host {SD_HOST} and port {SD_PORT}")
 else:
     service_discovery = None
